@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+// Vendors
+@import '~antd/dist/antd.css';
+@import '~mapbox-gl/dist/mapbox-gl.css';
+
+// Components
+@import './components/app.scss';
+@import './components/map.scss';
+
+// Routes
+@import './routes/home.scss';
+
+//Elements
