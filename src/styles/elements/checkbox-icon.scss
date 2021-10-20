@@ -1,0 +1,16 @@
+.checkbox-icon {
+  cursor: pointer;
+  padding: 0px 10px;
+
+  input {
+    appearance: none;
+  }
+
+  input + span svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  &.active input + span svg {
+    fill: #1890ff;
+  }
+}

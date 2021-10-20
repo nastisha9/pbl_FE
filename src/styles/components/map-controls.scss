@@ -1,0 +1,35 @@
+.map-conttrolls {
+  position: absolute;
+  top: 12px;
+  left: 5%;
+  z-index: 99;
+  width: 20%;
+
+  &--container {
+    display: flex;
+    max-width: 100%;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    // box-shadow: rgb(0 0 0 / 5%) 0px 0px 4px 0px, rgb(94 94 94 / 21%) 0px 1px 2px 0px;
+    // padding: 10.5px 10px;
+    padding: 8.5px 10px 8px 3px;
+  }
+
+  &--search {
+    position: relative;
+    display: flex;
+    width: 100%;
+
+    span {
+      position: absolute;
+      left: 5px;
+      top: 4px;
+      bottom: 0;
+
+      svg {
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+    }
+  }
+}
