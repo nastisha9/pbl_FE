@@ -2,7 +2,6 @@ const markers = [
   {
     latitude: 47.021074901638116,
     longitude: 28.83304776048192,
-    ty
   }
 ];
 const APIPath = '/markers';
