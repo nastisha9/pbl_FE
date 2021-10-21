@@ -1,4 +1,64 @@
 .map-container {
   width: 100%;
   height: 100vh;
+  position: relative;
+}
+
+.marker {
+  // width:0;
+  // height:0;
+  position: relative;
+
+  .marker-form-container {
+    position: absolute;
+    top: 10px;
+    width: 600px;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: white;
+    z-index: 99;
+  }
+}
+
+.marker .marker-pin-point {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-sizing:border-box;
+  width: 30px;
+  height: 30px;
+  color:#fff;
+  background: #4D2D73;
+  border:solid 2px;
+  border-radius: 0 70% 70%;
+  box-shadow:0 0 2px #000;
+  cursor: pointer;
+  transform-origin:0 0;
+  transform: rotateZ(-135deg);
+}
+
+.marker b {
+  transform: rotateZ(135deg)
+}
+
+.resycle-type-field {
+  display: flex;
+
+  label {
+    margin: 0 20px;
+
+    input {
+      appearance: none;
+
+      + .marker .marker-pin--label {
+        margin-left: -50%;
+      }
+
+      &:checked + .marker {
+        transform: scale(1.2);
+      }
+    }
+
+  }
+
 }

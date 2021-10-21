@@ -12,6 +12,21 @@ code {
     monospace;
 }
 
+.react-geocoder {
+  flex: 1;
+
+  input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding-left: 25px;
+
+    &:focus {
+      border: 2px solid #1890ff;
+      outline: #1890ff !important;
+      outline-width: 2px !important;
+    }
+  }
+}
 // Vendors
 @import '~antd/dist/antd.css';
 @import '~mapbox-gl/dist/mapbox-gl.css';
@@ -19,8 +34,10 @@ code {
 // Components
 @import './components/app.scss';
 @import './components/map.scss';
+@import './components/map-controls.scss';
 
 // Routes
 @import './routes/home.scss';
 
 //Elements
+@import './elements/checkbox-icon.scss';
