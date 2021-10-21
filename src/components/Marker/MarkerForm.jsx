@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 
+import ResycleTypeField from './ResycleTypeField';
+
 const MarkerForm = ({ onSubmit, onCancel, marker }) => {
   const [form] = Form.useForm();
 
@@ -21,7 +23,8 @@ const MarkerForm = ({ onSubmit, onCancel, marker }) => {
           <Input placeholder="Please Enter Address" />
         </Form.Item>
         <Form.Item label="Type">
-          <Input placeholder="Please Enter Type" />
+          <ResycleTypeField />
+          {/* <Input placeholder="Please Enter Type" /> */}
         </Form.Item>
         <Form.Item>
           <Button type="primary" onClick={handleSubmit}>Submit</Button>

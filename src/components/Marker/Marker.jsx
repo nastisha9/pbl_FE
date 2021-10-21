@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import{ Marker as GLMarker } from 'react-map-gl';
 
+import { MarkerPin } from '../../elements';
 import MarkerForm from './MarkerForm';
 
 const Marker = ({ index, marker: { latitude, longitude, isNewMarker }, onSave, onCancel }) => {
@@ -36,14 +37,13 @@ const Marker = ({ index, marker: { latitude, longitude, isNewMarker }, onSave, o
       onDrag={onMarkerDrag}
       onDragEnd={onMarkerDragEnd}
     >
-      <div className="marker">
-        <span className="marker-pin-point"><b>{index + 1}</b></span>
+      <MarkerPin>
         {isNewMarker ? (
           <div className="marker-form-container" onClick={e => e.stopPropagation()}>
             <MarkerForm onSubmit={onSave} onCancel={onCancel} marker={marker} onClick={e => e.stopPropagation()} />
           </div>
         ) : null}
-      </div>
+      </MarkerPin>
     </GLMarker>
   )
 };

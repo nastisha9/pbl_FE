@@ -5,8 +5,8 @@
 }
 
 .marker {
-  width:0;
-  height:0;
+  // width:0;
+  // height:0;
   position: relative;
 
   .marker-form-container {
@@ -41,6 +41,24 @@
   transform: rotateZ(135deg)
 }
 
-.temporary-marker span {
-  background: #D3D3D3;
+.resycle-type-field {
+  display: flex;
+
+  label {
+    margin: 0 20px;
+
+    input {
+      appearance: none;
+
+      + .marker .marker-pin--label {
+        margin-left: -50%;
+      }
+
+      &:checked + .marker {
+        transform: scale(1.2);
+      }
+    }
+
+  }
+
 }

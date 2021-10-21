@@ -1,6 +1,9 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import MapGL, {NavigationControl} from 'react-map-gl';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { getMarkers } from '../../selectors/map';
+import { getMarkersRequest, createMarkerRequest } from '../../actions/map';
 import MapControls from '../MapControls';
 import Marker from '../Marker';
 
@@ -22,6 +25,14 @@ const navStyle = {
 };
 
 const Map = () => {
+  const dispatch = useDispatch();
+  const { items: markers } = useSelector(getMarkers);
+  // console.log(storeMarkers);
+
+  useEffect(() => {
+    dispatch(getMarkersRequest());
+  }, [dispatch]);
+
   const [viewport, setViewport] = useState({
     latitude: 47.0202,
     longitude: 28.8387,
@@ -30,9 +41,7 @@ const Map = () => {
     pitch: 0
   });
 
-  const mapRef = useRef(null);
-
-  const [markers, setMarkers] = useState([]);
+  // const [markers, setMarkers] = useState([]);
   const [isMarkerCreationAvailable, setMarketCreation] = useState(false);
 
   const [marker, setMarker] = useState(null);
@@ -52,21 +61,15 @@ const Map = () => {
   }
 
   const onSaveMarker = (marker) => {
-    setMarkers([...markers, marker]);
+    dispatch(createMarkerRequest(marker));
     setMarker(null);
   }
 
   const onCancel = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
     setMarker(null);
   }
 
   const addMarker = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-
     const [longitude, latitude] = e.lngLat;
 
     if (isMarkerCreationAvailable) {
@@ -90,7 +93,6 @@ const Map = () => {
         onChange={setMarketCreation}
       />
       <MapGL
-        ref={mapRef}
         {...viewport}
         width="100%"
         height="100%"
