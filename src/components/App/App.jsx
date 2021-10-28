@@ -14,7 +14,6 @@ import Navbar from '../Navbar/Navbar';
 import About from '../../routes/About';
 import Home from '../../routes/Home';
 import Topics from '../../routes/Topics';
-import Footer from '../Footer/Footer';
 
 const App = () => {
   return (
@@ -41,8 +40,6 @@ const App = () => {
         </Switch>
       </div>
   </Router>
-
-  <Footer />
   </div>
   );
 };
