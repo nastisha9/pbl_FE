@@ -10,7 +10,8 @@ import {
 
 import { LinkButton } from '../../elements';
 
-import Navbar from '../Navbar/Navbar';
+
+import Navbar from '../Navbar';
 import About from '../../routes/About';
 import Home from '../../routes/Home';
 import Topics from '../../routes/Topics';
