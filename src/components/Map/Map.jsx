@@ -28,7 +28,7 @@ const Map = () => {
   const dispatch = useDispatch();
   const { items: markers } = useSelector(getMarkers);
   // console.log(storeMarkers);
-
+   console.log(markers)
   useEffect(() => {
     dispatch(getMarkersRequest());
   }, [dispatch]);
@@ -56,7 +56,8 @@ const Map = () => {
     setMarker({
       name: item.place_name,
       longitude: item.center[0],
-      latitude: item.center[1]
+      latitude: item.center[1],
+      type: {},
     })
   }
 
@@ -77,6 +78,7 @@ const Map = () => {
         longitude,
         latitude,
         isNewMarker: true,
+        type: {},
       })
     }
   }

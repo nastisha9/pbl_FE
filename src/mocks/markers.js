@@ -2,7 +2,23 @@ const markers = [
   {
     latitude: 47.021074901638116,
     longitude: 28.83304776048192,
-    ty
+    type: {
+      id: 'paper',
+      marker_color: 'red',
+      label: 'Paper',
+      description: 'asdsadasdasdsfsfasd'
+    }
+  },
+  {
+    latitude: 47.0423,
+    longitude: 28.7915,
+    description: 'gegtee',
+    type: {
+      id: 'accumulator',
+      marker_color: 'green',
+      label: 'accumulator',
+      description: 'asdsadasdasdsfsfasd',
+    }
   }
 ];
 const APIPath = '/markers';

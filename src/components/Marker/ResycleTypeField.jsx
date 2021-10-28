@@ -1,5 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+
+import {ChromePicker} from 'react-color';
 
 import {getResycleTypesRequest} from '../../actions/map';
 import {getResycleTypes} from '../../selectors/map';
@@ -9,6 +11,11 @@ const ResycleTypeField = () => {
   const name = 'resycle-type';
   const dispatch = useDispatch();
   const { items: resycleTypes } = useSelector(getResycleTypes);
+
+  const [color, setColor] = useState ('#fff');
+  const [showColorPicker, setShowColorPicker] = useState (false);
+
+
 
   useEffect(() => {
     dispatch(getResycleTypesRequest());
@@ -28,6 +35,19 @@ const ResycleTypeField = () => {
           </label>
         )
       })}
+
+      <button
+      onClick = {() => setShowColorPicker (showColorPicker => !showColorPicker)}
+      > 
+        {showColorPicker ? 'Close color picker' : 'Pick a color'} 
+      </button>
+      {showColorPicker && (
+        <ChromePicker
+        color = {color}
+        onChange = {updatedColor => setColor(updatedColor.hex) }
+        />
+      )}
+      
     </div>
   );
 }
