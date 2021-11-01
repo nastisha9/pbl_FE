@@ -14,16 +14,13 @@ import About from '../../routes/About';
 import Home from '../../routes/Home';
 import Topics from '../../routes/Topics';
 import Footer from '../Footer';
-import Navbar from '../Navbar';
 
 
 const App = () => {
   return (
     <div className="content wrap">
     <Router>
-      <div>
-      <Navbar /> 
-      </div>
+      
       <div>
         {/* <LinkButton to="/" type="link">home</LinkButton>
         <LinkButton to="/about" type="link">About</LinkButton>
