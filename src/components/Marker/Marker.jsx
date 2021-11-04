@@ -9,6 +9,7 @@ const Marker = ({ index, marker: { latitude, longitude, isNewMarker, type }, onS
     latitude: latitude,
     longitude: longitude,
   });
+ 
 
   const { marker_color } = type ?? {};
 
@@ -39,7 +40,7 @@ const Marker = ({ index, marker: { latitude, longitude, isNewMarker, type }, onS
       onDrag={onMarkerDrag}
       onDragEnd={onMarkerDragEnd}
     >
-      <MarkerPin color={marker_color} >
+      <MarkerPin color = {marker_color || ''}>
         {isNewMarker ? (
           <div className="marker-form-container" onClick={e => e.stopPropagation()}>
             <MarkerForm onSubmit={onSave} onCancel={onCancel} marker={marker} onClick={e => e.stopPropagation()} />
