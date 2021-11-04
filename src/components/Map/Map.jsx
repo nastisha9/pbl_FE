@@ -61,6 +61,7 @@ const Map = () => {
   }
 
   const onSaveMarker = (marker) => {
+    console.log(marker);
     dispatch(createMarkerRequest(marker));
     setMarker(null);
   }
