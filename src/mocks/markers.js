@@ -17,7 +17,7 @@ const markers = [
     type: {
       id: 'glass',
       label: 'glass',
-      marker_color: '#f8e71c',
+      marker_color: '#F8E71C',
       types: [
         'glass'
       ],

@@ -4,7 +4,11 @@ import{ Marker as GLMarker } from 'react-map-gl';
 import { MarkerPin } from '../../elements';
 import MarkerForm from './MarkerForm';
 
-const Marker = ({ index, marker: { latitude, longitude, isNewMarker, type }, onSave, onCancel }) => {
+const Marker = ({ index, onSave, onCancel, ...props }) => {
+  const  { latitude, longitude, type, isNewMarker } = props.marker;
+  
+
+
   const [marker, setMarker] = useState({
     latitude: latitude,
     longitude: longitude,
