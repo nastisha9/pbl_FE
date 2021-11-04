@@ -22,6 +22,9 @@ const MarkerForm = ({ onSubmit, onCancel, marker }) => {
         <Form.Item label="Name">
           <Input placeholder="Please Enter Address" />
         </Form.Item>
+        <Form.Item label="Description">
+          <Input placeholder="Please Enter Description" />
+        </Form.Item>
         <Form.Item label="Type">
           <ResycleTypeField />
           {/* <Input placeholder="Please Enter Type" /> */}
