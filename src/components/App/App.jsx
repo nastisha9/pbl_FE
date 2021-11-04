@@ -10,6 +10,8 @@ import {
 
 import { LinkButton } from '../../elements';
 
+
+import Navbar from '../Navbar';
 import About from '../../routes/About';
 import Home from '../../routes/Home';
 import Topics from '../../routes/Topics';
@@ -21,6 +23,9 @@ const App = () => {
     <div className="content wrap">
     <Router>
       
+      <div>
+      <Navbar /> 
+      </div>
       <div>
         {/* <LinkButton to="/" type="link">home</LinkButton>
         <LinkButton to="/about" type="link">About</LinkButton>
