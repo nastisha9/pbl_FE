@@ -7,6 +7,9 @@ import {
   GET_RESYCLE_TYPES_START,
   GET_RESYCLE_TYPES_SUCCESS,
   GET_RESYCLE_TYPES_ERROR,
+  GET_RESYCLE_TYPES_LIST_START,
+  GET_RESYCLE_TYPES_LIST_SUCCESS,
+  GET_RESYCLE_TYPES_LIST_ERROR
 } from '../actions/types';
 
 const markers = handleActions(
@@ -27,5 +30,14 @@ const resycleTypes = handleActions(
   {isFetched: false, items: []},
 );
 
-export const map = combineReducers({ markers, resycleTypes });
+const resycleTypesList = handleActions(
+  {
+    [GET_RESYCLE_TYPES_LIST_START]: state => ({...state, isFetched: false}),
+    [GET_RESYCLE_TYPES_LIST_SUCCESS]: (state, {payload}) => ({...state, isFetched: true, items: payload}),
+    [GET_RESYCLE_TYPES_LIST_ERROR]: state => ({...state, isFetched: true}),
+  },
+  {isFetched: false, items: []},
+);
+
+export const map = combineReducers({ markers, resycleTypes, resycleTypesList });
 

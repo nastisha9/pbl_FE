@@ -4,14 +4,14 @@ import{ Marker as GLMarker } from 'react-map-gl';
 import { MarkerPin } from '../../elements';
 import MarkerForm from './MarkerForm';
 
-const Marker = ({ index, onSave, onCancel, ...props }) => {
-  const  { latitude, longitude, type: {marker_color}, isNewMarker } = props.marker;
-  
+const Marker = ({ index, marker: { latitude, longitude, isNewMarker, type }, onSave, onCancel }) => {
   const [marker, setMarker] = useState({
     latitude: latitude,
     longitude: longitude,
   });
  
+
+  const { marker_color } = type ?? {};
 
   const onMarkerDragStart = useCallback(event => {
     // logEvents(_events => ({..._events, onDragStart: event.lngLat}));

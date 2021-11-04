@@ -1,0 +1,20 @@
+.create-marker-type-form {
+  &--pin-container .marker {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    .marker-pin-point {
+      transform-origin: center;
+      padding: 50px;
+    }
+  }
+  .sketch-picker {
+    width: 100% !important;
+    box-sizing: border-box !important;
+
+    > div:first-child {
+      padding-bottom: 120px !important;
+    }
+  }
+}
