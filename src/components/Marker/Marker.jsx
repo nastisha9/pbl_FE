@@ -9,7 +9,6 @@ const Marker = ({ index, marker: { latitude, longitude, isNewMarker, type }, onS
     latitude: latitude,
     longitude: longitude,
   });
- 
 
   const { marker_color } = type ?? {};
 
