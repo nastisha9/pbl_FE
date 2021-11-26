@@ -72,11 +72,11 @@ const MarkerTypeForm = () => {
           <SketchPicker color={color} onChangeComplete={onColorChange} />
         </Form.Item>
         <Form.Item
-          label="Resyle types"
+          label="Recycle types"
           name="types"
           rules={[{ required: true, message: 'Please select type' }]}
         >
-          <Select placeholder="Select resycle type" mode="multiple" onChange={form.setFieldsValue}>
+          <Select placeholder="Select recycle type" mode="multiple" onChange={form.setFieldsValue}>
             {resycleTypeList.map(({ id, type: value }) => <Option key={value}>{value}</Option>)}
           </Select>
         </Form.Item>

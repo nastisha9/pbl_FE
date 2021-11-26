@@ -13,17 +13,5 @@ export const MenuItems = [
         title: 'About us',
         url: '/about',
         cName: 'nav-links',
-    },
-    {
-        title: 'Sign Up',
-        url: '#',
-        cName: 'nav-links-mobile',
-    },
-    {
-        title: 'Sign In',
-        url: '#',
-        cName: 'nav-links-mobile',
-    },
- 
- 
+    }, 
 ]

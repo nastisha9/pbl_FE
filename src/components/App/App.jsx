@@ -18,14 +18,15 @@ import Topics from '../../routes/Topics';
 import Footer from '../Footer';
 
 
+
 const App = () => {
   return (
     <div className="content wrap">
     <Router>
-      
+
       <div>
       <Navbar /> 
-      </div>
+      </div>    
       <div>
         {/* <LinkButton to="/" type="link">home</LinkButton>
         <LinkButton to="/about" type="link">About</LinkButton>
