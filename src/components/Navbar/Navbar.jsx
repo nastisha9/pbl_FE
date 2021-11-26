@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { MenuItems } from "./menuitems"
 import { Button } from '../button';
 
+import CreateSignUp from '../SignUp/CreateSignUp';
+
 const Navbar = () => {
 
    const [clicked, setClicked] = useState(false) 
@@ -26,7 +28,7 @@ const Navbar = () => {
                              </li>
                         )
                     })}
-                   
+                 <CreateSignUp>Sign Up</CreateSignUp> 
                 </ul>
               
                  </nav>
