@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import{ Marker as GLMarker } from 'react-map-gl';
+import{ Marker as GLMarker, Popup } from 'react-map-gl';
 
 import { MarkerPin } from '../../elements';
 import MarkerForm from './MarkerForm';
@@ -14,7 +14,7 @@ const Marker = ({ index, onSave, onCancel, ...props }) => {
     longitude: longitude,
   });
 
-  const { marker_color } = type ?? {};
+  const { marker_color, label, description } = type ?? {};
 
   const onMarkerDragStart = useCallback(event => {
     // logEvents(_events => ({..._events, onDragStart: event.lngLat}));
@@ -32,7 +32,10 @@ const Marker = ({ index, onSave, onCancel, ...props }) => {
     });
   }, []);
 
+  const [selectedMarker, setSelectedMarker] = useState(null);
+
   return (
+    <div>
     <GLMarker
       longitude={marker.longitude}
       latitude={marker.latitude}
@@ -42,6 +45,10 @@ const Marker = ({ index, onSave, onCancel, ...props }) => {
       onDragStart={onMarkerDragStart}
       onDrag={onMarkerDrag}
       onDragEnd={onMarkerDragEnd}
+      onClick = {(e) => {
+        e.preventDefault();
+        setSelectedMarker(marker);
+      }}
     >
       <MarkerPin color = {marker_color || ''}>
         {isNewMarker ? (
@@ -50,7 +57,26 @@ const Marker = ({ index, onSave, onCancel, ...props }) => {
           </div>
         ) : null}
       </MarkerPin>
+
     </GLMarker>
+   
+      {selectedMarker ? (
+          <Popup 
+          tipSize={5}
+          anchor="top"
+          latitude = {marker.latitude} 
+          longitude = {marker.longitude} 
+          onClose = { () => {
+            setSelectedMarker(null);
+          }}>
+            <div>
+              <h2>{label}</h2>
+              <p>{description}</p>
+            </div>
+          </Popup>
+        ) : null}
+
+    </div>
   )
 };
 
