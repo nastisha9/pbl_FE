@@ -6,7 +6,7 @@ const markers = [
       id: 'paper',
       marker_color: 'red',
       label: 'Paper',
-      description: 'asdsadasdasdsfsfasd'
+      description: 'newspaper, cardboard, magazines, etc.'
     }
   },
   {
