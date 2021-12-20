@@ -26,12 +26,27 @@ const navStyle = {
 
 const Map = () => {
   const dispatch = useDispatch();
-  const { items: markers } = useSelector(getMarkers);
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
   // console.log(storeMarkers);
-   console.log(markers)
-  useEffect(() => {
-    dispatch(getMarkersRequest());
-  }, [dispatch]);
+   useEffect(() => {
+    fetch("http://localhost:3000/marker/all")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
 
   const [viewport, setViewport] = useState({
     latitude: 47.0202,
@@ -65,6 +80,7 @@ const Map = () => {
     console.log(marker);
     dispatch(createMarkerRequest(marker));
     setMarker(null);
+    setItems([...items, marker])
   }
 
   const onCancel = (e) => {
@@ -105,7 +121,7 @@ const Map = () => {
         mapboxApiAccessToken={MAPBOX_TOKEN}
       >
         {marker && <Marker marker={marker} onSave={onSaveMarker} onCancel={onCancel} />}
-        {markers.map((marker, index) => (
+        {items.map((marker, index) => (
           <Marker index={index} marker={marker} onSave={onSaveMarker} />
         ))}
         <div className="nav" style={navStyle}>

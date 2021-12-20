@@ -6,8 +6,25 @@ import ResycleTypeField from './ResycleTypeField';
 const MarkerForm = ({ onSubmit, onCancel, marker }) => {
   const [form] = Form.useForm();
 
+  async function addMarker () {
+
+    let fullMarker = {...marker, ...form.getFieldsValue()}
+    console.warn(fullMarker);
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin',
+      body: JSON.stringify(fullMarker),
+  };
+  const response = await fetch('http://localhost:3000/marker', requestOptions);
+  const data = await response.json();
+  }
+
   const handleSubmit = (values) => {
     console.log(values);
+    console.log(form.getFieldsValue())
+    addMarker();
     onSubmit({ ...marker, ...values });
   }
 
@@ -18,8 +35,8 @@ const MarkerForm = ({ onSubmit, onCancel, marker }) => {
         form={form}
         onFinish={handleSubmit}
       >
-        <Form.Item label="Name" name="adress_name">
-          <Input placeholder="Please Enter Address" />
+        <Form.Item label="Name" name="name">
+          <Input placeholder="Please Enter Marker Name" />
         </Form.Item>
         <Form.Item label="Type" name='type'>
           <ResycleTypeField onChange={form.setFieldsValue} />
