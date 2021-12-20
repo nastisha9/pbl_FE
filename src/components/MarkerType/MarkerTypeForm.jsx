@@ -7,6 +7,7 @@ import { getResycleTypesListRequest, createResycleTypeRequest } from '../../acti
 import { getResycleTypesList } from '../../selectors/map';
 
 import { MarkerPin } from '../../elements';
+import TextArea from 'antd/lib/input/TextArea';
 
 const {Option} = Select;
 
@@ -65,6 +66,14 @@ const MarkerTypeForm = () => {
         >
           <Input placeholder="LabelName" />
         </Form.Item>
+
+        <Form.Item
+          label="Label description"
+          name="description"
+        >
+          <TextArea placeholder="Label Description" />
+        </Form.Item>
+
         <Form.Item
           label="Color"
           name="marker_color"
