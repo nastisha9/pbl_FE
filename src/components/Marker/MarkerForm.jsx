@@ -18,7 +18,7 @@ const MarkerForm = ({ onSubmit, onCancel, marker }) => {
         form={form}
         onFinish={handleSubmit}
       >
-        <Form.Item label="Name" name="adress_name">
+        <Form.Item label="Search a point" name="adress_name">
           <Input placeholder="Please Enter Address" />
         </Form.Item>
         <Form.Item label="Type" name='type'>
