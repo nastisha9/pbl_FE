@@ -6,7 +6,7 @@ const markers = [
       id: 'paper',
       marker_color: 'red',
       label: 'Paper',
-      description: 'asdsadasdasdsfsfasd'
+      description: 'newspaper, cardboard, magazines, etc.'
     }
   },
   {
@@ -39,7 +39,7 @@ const markers = [
     id: '2021-10-25T23:20:35.659Z',
     longitude: 27.924742995389487,
     latitude: 47.75020116912616,
-    adress_name: 'jlklkjkljkljl',
+    name: 'jlklkjkljkljl',
     type: {
       id: 'paper',
       marker_color: 'red',
@@ -48,7 +48,7 @@ const markers = [
     }
   }
 ];
-const APIPath = '/markers';
+const APIPath = 'http://localhost:3000/marker';
 
 export const APIGetMarkers = ({url = ''}) =>
   new Promise((res, rej) => {

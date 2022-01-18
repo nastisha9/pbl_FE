@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.8.3",
     "antd": "^4.16.13",
     "classnames": "^2.3.1",
+    "coa": "^2.0.2",
     "connected-react-router": "^6.9.1",
     "history": "^4.10.1",
     "i": "^0.3.7",
