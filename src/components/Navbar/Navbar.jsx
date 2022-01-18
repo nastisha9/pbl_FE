@@ -15,8 +15,7 @@ const Navbar = () => {
             <nav className="NavbarItems">
                 <h1 className="navbar-logo"> Green Leave <i className="fas fa-leaf"></i> </h1>
                 <div className="menu-icon" onClick={handleClick}> 
-                <i className={clicked ? 'fas fa-times' : 'fas fa-bars'}>             </i>
-                   
+                <i className={clicked ? 'fas fa-times' : 'fas fa-bars'}>             </i> 
                 </div>
                 <ul className={clicked ? 'nav-menu active' : 'nav-menu' }> 
                     {MenuItems.map((item, index) => {
@@ -28,9 +27,10 @@ const Navbar = () => {
                              </li>
                         )
                     })}
-                 <CreateSignUp>Sign Up</CreateSignUp> 
+                  <CreateSignUp> Sign up </CreateSignUp> 
                 </ul>
-              
+                
+                
                  </nav>
         )
     }

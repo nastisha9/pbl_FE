@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
+import SignInForm from '../Sign in/SignInForm'
 
-import SignUp from './SignUpForm';
-
-const CreateSignUp = () => {
+const CreateSignIn = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -18,14 +17,14 @@ const CreateSignUp = () => {
 
   return (
     <>
-      <Button type="default" ghost size="large" cName='nav-links' onClick={showModal}>
-        Sign up
+      <Button type="link" onClick={showModal}>
+        Sign In
       </Button>
-      <Modal title="Sign Up" visible={isModalVisible} footer={null} onCancel={handleCancel} >
-        <SignUp />
+      <Modal title="Sign In" visible={isModalVisible} footer={null} onCancel={handleCancel}>
+        <SignInForm />
       </Modal>
     </>
   );
 }
 
-export default CreateSignUp;
+export default CreateSignIn;

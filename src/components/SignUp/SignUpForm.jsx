@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Select, Row, Col, Button} from 'antd';
+import { Modal, Form, Input, Select, Row, Col, Button } from 'antd';
+import { Typography, Space } from 'antd';
+import CreateSignIn from '../Sign in/CreateSignIn';
+
+
+const { Title, Paragraph, Text, Link } = Typography;
+
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
@@ -37,18 +43,18 @@ const SignUpForm = () => {
 
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
-  
+
     signUp();
 
   };
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [userName, setNickname] = useState("")
+  const [userName, setUsername] = useState("")
 
-async function signUp () {
+  async function signUp() {
 
-    let item = {email, userName, roles:["lead"], password}
+    let item = { email, userName, roles: ["lead"], password }
     console.warn(item);
 
     const requestOptions = {
@@ -56,15 +62,17 @@ async function signUp () {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
       body: JSON.stringify(item),
-  };
-  const response = await fetch('http://localhost:3000/auth/signUp', requestOptions);
-  // const data = await response.json();
+    };
+    const response = await fetch('http://localhost:3000/auth/signUp', requestOptions);
+    // const data = await response.json();
   }
-  
+
 
   return (
     <Form
       {...formItemLayout}
+      layout="horizontal"
+      size="medium"
       form={form}
       name="register"
       onFinish={onFinish}
@@ -82,7 +90,7 @@ async function signUp () {
           },
         ]}
       >
-        <Input value = {email} onChange = {(e)=>setEmail(e.target.value)} />
+        <Input value={email} onChange={(e) => setEmail(e.target.value)} />
       </Form.Item>
 
       <Form.Item
@@ -96,7 +104,7 @@ async function signUp () {
         ]}
         hasFeedback
       >
-        <Input.Password value = {password} onChange = {(e)=>setPassword(e.target.value)}/>
+        <Input.Password value={password} onChange={(e) => setPassword(e.target.value)} />
       </Form.Item>
 
       <Form.Item
@@ -124,8 +132,8 @@ async function signUp () {
       </Form.Item>
 
       <Form.Item
-        name="nickname"
-        label="Nickname"
+        name="username"
+        label="Username"
         tooltip="What do you want others to call you?"
         rules={[
           {
@@ -135,16 +143,23 @@ async function signUp () {
           },
         ]}
       >
-        <Input value = {userName} onChange = {(e)=>setNickname(e.target.value)} />
+        <Input value={userName} onChange={(e) => setUsername(e.target.value)} />
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">
           Register
         </Button>
+        <Paragraph>
+        </Paragraph>
+        <Paragraph>
+          <Text> Already have an account? </Text>
+          <CreateSignIn />
+        </Paragraph>
       </Form.Item>
     </Form>
   );
+
 };
-  
+
 export default SignUpForm;
