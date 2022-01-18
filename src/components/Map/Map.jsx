@@ -57,7 +57,7 @@ const Map = () => {
   });
 
   // const [markers, setMarkers] = useState([]);
-  const [isMarkerCreationAvailable, setMarketCreation] = useState(false);
+  const [isMarkerCreationAvailable, setMarkerCreation] = useState(false);
 
   const [marker, setMarker] = useState(null);
 
@@ -67,18 +67,22 @@ const Map = () => {
 
   const onSelected = (viewport, item) => {
     onViewPortChange(viewport);
+    console.log(item)
 
     setMarker({
+      id: item.id,
       name: item.place_name,
       longitude: item.center[0],
       latitude: item.center[1],
       type: {},
     })
+    setMarker(null);
   }
 
   const onSaveMarker = (marker) => {
+    console.log('HERE')
     console.log(marker);
-    dispatch(createMarkerRequest(marker));
+    // (createMarkerRequest(marker));
     setMarker(null);
     setItems([...items, marker])
   }
@@ -109,7 +113,7 @@ const Map = () => {
         hideOnSelect={true}
         queryParams={queryParams}
         isMarkerCreationAvailable={isMarkerCreationAvailable}
-        onChange={setMarketCreation}
+        onChange={setMarkerCreation}
       />
       <MapGL
         {...viewport}

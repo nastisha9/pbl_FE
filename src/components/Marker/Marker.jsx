@@ -1,19 +1,23 @@
 import React, { useCallback, useState } from 'react';
 import{ Marker as GLMarker, Popup } from 'react-map-gl';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { MarkerPin } from '../../elements';
 import MarkerForm from './MarkerForm';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { Button, IconButton } from '@mui/material';
 
-const Marker = ({ index, onSave, onCancel, ...props }) => {
-  const  { latitude, longitude, type, isNewMarker } = props.marker;
+const Marker = ({ index, onSave, onCancel, onDelete, ...props }) => {
+  const  { latitude, longitude, type, isNewMarker, name } = props.marker;
   
-
+console.log(props)
 
   const [marker, setMarker] = useState({
     latitude: latitude,
     longitude: longitude,
   });
 
+  console.log(type)
   const { marker_color, label, description } = type ?? {};
 
   const onMarkerDragStart = useCallback(event => {
@@ -33,6 +37,29 @@ const Marker = ({ index, onSave, onCancel, ...props }) => {
   }, []);
 
   const [selectedMarker, setSelectedMarker] = useState(null);
+
+  async function deleteMarker(){
+    console.log(props.marker._id)
+
+    const requestOptions = {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+    };
+    const response = await fetch(`http://localhost:3000/marker/${props.marker._id}`, requestOptions);
+    window.location.reload(false);
+
+
+  }
+
+  const handleDelete= (values) => {
+    console.log(values);
+    deleteMarker();
+  }
+
+  const handleEdit = (values)=>{
+    console.log(values);
+  }
 
   return (
     <div>
@@ -70,7 +97,18 @@ const Marker = ({ index, onSave, onCancel, ...props }) => {
             setSelectedMarker(null);
           }}>
             <div>
-              <h2>{label}</h2>
+              <IconButton>
+                <DeleteOutlined color="primary" onClick={handleDelete}/>
+              </IconButton>
+              
+              <IconButton>
+                <EditOutlined color="primary" onClick={handleEdit}/>
+              </IconButton>
+
+            </div>
+            <div>
+              <h2>{name}</h2>
+              <h3>{label}</h3>
               <p>{description}</p>
             </div>
           </Popup>
