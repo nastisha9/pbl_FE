@@ -10,6 +10,7 @@ const MarkerForm = ({ onSubmit, onCancel, marker }) => {
 
     let fullMarker = {...marker, ...form.getFieldsValue()}
     console.warn(fullMarker);
+    console.log(fullMarker)
 
     const requestOptions = {
       method: 'POST',
@@ -19,6 +20,8 @@ const MarkerForm = ({ onSubmit, onCancel, marker }) => {
   };
   const response = await fetch('http://localhost:3000/marker', requestOptions);
   const data = await response.json();
+  window.location.reload(false);
+
   }
 
   const handleSubmit = (values) => {
